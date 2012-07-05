@@ -2360,12 +2360,12 @@ L.Icon.Default = L.Icon.extend({
 	},
 
 	_getIconUrl: function (name) {
-		var path = L.Icon.Default.imagePath;
-		if (!path) {
-			throw new Error("Couldn't autodetect L.Icon.Default.imagePath, set it manually.");
+		if (name == 'shadow') {
+			return "<%= asset_path('marker-shadow.png') %>";
 		}
-
-		return path + '/marker-' + name + '.png';
+		else {
+			return "<%= asset_path('marker-icon.png') %>";
+		}
 	}
 });
 
