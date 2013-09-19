@@ -67,7 +67,7 @@ Adding a `:popup` element to a marker hash will also generate a popup for a make
 	  	:markers => [
            {
              :latlng => [51.52238797921441, -0.08366235665359283],
-             :marker => "Hello!"
+             :popup => "Hello!"
            }
         ])
 
@@ -79,5 +79,5 @@ If you want to override the map settings you set in the initializer, you can als
 	  	},
 	  	:tile_layer => "http://{s}.somedomain.com/blabla/{z}/{x}/{y}.png",
 	  	:attribution => "Some other attribution text",
-	  	:max_zoom = 4
+	  	:max_zoom => 4
 	  	)
