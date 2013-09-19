@@ -1,6 +1,10 @@
 require "leaflet-rails/version"
 
 module Leaflet
+  mattr_accessor :tile_layer
+  mattr_accessor :attribution
+  mattr_accessor :max_zoom
+  
   module Rails
     class Engine < ::Rails::Engine
       initializer 'leaflet-rails.precompile' do |app|
