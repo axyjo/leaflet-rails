@@ -22,4 +22,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "simplecov-rcov"
   s.add_development_dependency "pry"
+  s.add_development_dependency "actionpack", '>= 3.2.0'
+  s.add_development_dependency "activesupport", '>= 3.2.0'
+  s.add_development_dependency "activemodel", '>= 3.2.0'
+  s.add_development_dependency "railties", '>= 3.2.0'
 end
