@@ -7,7 +7,6 @@
 
 require 'simplecov'
 require 'simplecov-rcov'
-require 'pry'
 
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start
