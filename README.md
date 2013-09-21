@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/axyjo/leaflet-rails.png?branch=master)](https://travis-ci.org/axyjo/leaflet-rails)
+
 Quickstart Guide
 ================
 
