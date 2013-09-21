@@ -19,7 +19,10 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "simplecov-rcov"
+  s.add_development_dependency "actionpack", '>= 3.2.0'
+  s.add_development_dependency "activesupport", '>= 3.2.0'
+  s.add_development_dependency "activemodel", '>= 3.2.0'
+  s.add_development_dependency "railties", '>= 3.2.0'
 end
