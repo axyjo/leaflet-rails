@@ -5,11 +5,12 @@ module Leaflet
       options[:tile_layer] ||= Leaflet.tile_layer
       options[:attribution] ||= Leaflet.attribution
       options[:max_zoom] ||= Leaflet.max_zoom
+      options[:container_id] ||= 'map'
       
       output = []
-      output << "<div id='map'></div>"
+      output << "<div id='#{options[:container_id]}'></div>"
       output << "<script>"
-      output << "var map = L.map('map')"
+      output << "var map = L.map('#{options[:container_id]}')"
       output << "map.setView([#{options[:center][:latlng][0]}, #{options[:center][:latlng][1]}], #{options[:center][:zoom]})"
       if options[:markers]
         options[:markers].each do |marker|

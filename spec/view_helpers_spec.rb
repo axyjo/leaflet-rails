@@ -78,5 +78,22 @@ describe Leaflet::ViewHelpers do
   	  result.should match(/attribution: 'Some other attribution text'/)
   	  result.should match(/maxZoom: 4/)
   end
+
+  it 'should have multiple map on single page' do
+    result = @view.map(:container_id => "first_map", :center => {
+              :latlng => [51.52238797921441, -0.08366235665359283],
+                })
+
+    result1 = @view.map(:container_id => "second_map", :center => {
+              :latlng => [51.62238797921441, -0.08366235665359284],
+                })
+
+          result.should match(/id=\'first_map'/)
+          result.should match(/L.map\('first_map'/)
+
+          result1.should match(/id=\'second_map'/)
+          result1.should match(/L.map\('second_map'/)
+
+  end
   
 end
