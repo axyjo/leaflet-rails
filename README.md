@@ -93,3 +93,17 @@ map(:center => {
   :max_zoom => 4
 )
 ```
+
+If you want to have multiple maps on same page , you should add unique container_id in helper for each map:
+
+```ruby
+map(:container_id => "first_map", :center => {
+    :latlng => [51.52238797921441, -0.08366235665359283],
+    :zoom => 18
+})
+
+map(:container_id => "second_map", :center => {
+    :latlng => [51.52238797921441, -0.08366235665359283],
+    :zoom => 18
+})
+```
