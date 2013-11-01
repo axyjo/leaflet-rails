@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/axyjo/leaflet-rails.png?branch=master)](https://travis-ci.org/axyjo/leaflet-rails)
+[![Gem Version](https://badge.fury.io/rb/leaflet-rails.png)](http://badge.fury.io/rb/leaflet-rails)
 
 Quickstart Guide
 ================
