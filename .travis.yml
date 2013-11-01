@@ -5,11 +5,13 @@ rvm:
   - rbx-19mode
   - ruby-head
   - jruby-head
+  - 2.0.0
 matrix:
   allow_failures:
     - rvm: jruby-19mode
     - rvm: rbx-19mode
     - rvm: ruby-head
     - rvm: jruby-head
+    - rvm: 2.0.0
 notifications:
   email: false
