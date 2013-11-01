@@ -1,5 +1,5 @@
 module Leaflet
   module Rails
-    VERSION = "0.6.4"
+    VERSION = "0.7.dev"
   end
 end

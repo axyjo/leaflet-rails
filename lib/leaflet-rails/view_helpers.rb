@@ -1,12 +1,12 @@
 module Leaflet
   module ViewHelpers
-  
+
     def map(options)
       options[:tile_layer] ||= Leaflet.tile_layer
       options[:attribution] ||= Leaflet.attribution
       options[:max_zoom] ||= Leaflet.max_zoom
       options[:container_id] ||= 'map'
-      
+
       output = []
       output << "<div id='#{options[:container_id]}'></div>"
       output << "<script>"
@@ -27,7 +27,7 @@ module Leaflet
       output << "</script>"
       output.join("\n").html_safe
     end
-  
+
   end
-  
+
 end
