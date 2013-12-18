@@ -95,5 +95,27 @@ describe Leaflet::ViewHelpers do
           result1.should match(/L.map\('second_map'/)
 
   end
-  
+ 
+  it 'should generate a map and add a circle' do
+    result = @view.map(
+                :container_id => "first_map",
+                :center => {
+                  :latlng => [51.52238797921441, -0.08366235665359283]
+                },
+                :circles => [
+                  {
+                    :latlng => [51.52238797921441, -0.08366235665359283],
+                    :radius => 12,
+                    :color => 'red',
+                    :fillColor => '#f03',
+                    :fillOpacity => 0.5
+                  }
+                  ])
+    result.should match(/L.circle\(\[\'51.52238797921441\', \'-0.08366235665359283\'\], 12, \{
+           color: \'red\',
+           fillColor: \'#f03\',
+           fillOpacity: 0.5
+        \}\).addTo\(map\)/)
+  end
+
 end
