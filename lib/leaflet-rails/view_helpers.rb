@@ -20,6 +20,17 @@ module Leaflet
           end
         end
       end
+
+      if options[:circles]
+        options[:circles].each do |circle|
+          output << "L.circle(['#{circle[:latlng][0]}', '#{circle[:latlng][1]}'], #{circle[:radius]}, {
+           color: '#{circle[:color]}',
+           fillColor: '#{circle[:fillColor]}',
+           fillOpacity: #{circle[:fillOpacity]}
+        }).addTo(map);"
+        end
+      end
+
       output << "L.tileLayer('#{options[:tile_layer]}', {
           attribution: '#{options[:attribution]}',
           maxZoom: #{options[:max_zoom]}
