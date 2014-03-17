@@ -8,7 +8,7 @@ module Leaflet
       options[:container_id] ||= 'map'
 
       output = []
-      output << "<div id='#{options[:container_id]}'></div>"
+      output << "<div id='#{options[:container_id]}'></div>" unless options[:no_container]
       output << "<script>"
       output << "var map = L.map('#{options[:container_id]}')"
       output << "map.setView([#{options[:center][:latlng][0]}, #{options[:center][:latlng][1]}], #{options[:center][:zoom]})"
