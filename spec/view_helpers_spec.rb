@@ -118,4 +118,15 @@ describe Leaflet::ViewHelpers do
         \}\).addTo\(map\)/)
   end
 
+  it 'should not create the container tag if no_container is set' do
+    result = @view.map(:center => {
+        :latlng => [51.52238797921441, -0.08366235665359283],
+        :zoom => 18
+      },
+      :no_container => true
+      )
+
+    result.should_not match(/<div id='map'>/)
+  end
+
 end
