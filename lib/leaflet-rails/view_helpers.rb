@@ -31,6 +31,12 @@ module Leaflet
         end
       end
 
+      if options[:polylines]¬
+         options[:polylines].each do |polyline|¬
+           output << "L.polyline(#{polyline[:latlngs]}).addTo(map);"¬
+         end¬
+      end¬
+
       output << "L.tileLayer('#{options[:tile_layer]}', {
           attribution: '#{options[:attribution]}',
           maxZoom: #{options[:max_zoom]}
