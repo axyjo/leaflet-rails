@@ -36,6 +36,10 @@ module Leaflet
            output << "L.polyline(#{polyline[:latlngs]}).addTo(map);"
          end
       end
+      
+      if options[:fitbounds]
+        output << "map.fitBounds(L.latLngBounds(#{options[:fitbounds]}));"
+      end
 
       output << "L.tileLayer('#{options[:tile_layer]}', {
           attribution: '#{options[:attribution]}',
