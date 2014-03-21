@@ -129,4 +129,18 @@ describe Leaflet::ViewHelpers do
     result.should_not match(/<div id='map'>/)
   end
 
+  it 'should generate a map and add a polyline' do
+    result = @view.map(
+                :polylines => [{:latlngs => [[51.5, -0.08], [-51.5, 0.08]], :options => {:color => "green"}}]
+                )
+    result.should match(Regexp.quote('L.polyline([[51.5, -0.08], [-51.5, 0.08]],{"color":"green"}).addTo(map);'))
+  end
+
+  it 'should generate a map and add fitbounds' do
+    result = @view.map(
+                :fitbounds => [[51.5, -0.08],[-51.5, 0.08]]
+                )
+    result.should match(Regexp.quote("map.fitBounds(L.latLngBounds([[51.5, -0.08], [-51.5, 0.08]]));"))
+  end
+
 end
