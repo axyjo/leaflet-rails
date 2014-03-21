@@ -143,4 +143,8 @@ describe Leaflet::ViewHelpers do
     result.should match(Regexp.quote("map.fitBounds(L.latLngBounds([[51.5, -0.08], [-51.5, 0.08]]));"))
   end
 
+  it 'should not require a center option to generate a map' do
+    result = @view.map({})
+    result.should_not match(Regexp.quote("map.setView"))
+  end
 end
