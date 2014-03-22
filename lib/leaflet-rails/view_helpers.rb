@@ -11,7 +11,9 @@ module Leaflet
       output << "<div id='#{options[:container_id]}'></div>" unless options[:no_container]
       output << "<script>"
       output << "var map = L.map('#{options[:container_id]}')"
-      output << "map.setView([#{options[:center][:latlng][0]}, #{options[:center][:latlng][1]}], #{options[:center][:zoom]})"
+      if options[:center]
+        output << "map.setView([#{options[:center][:latlng][0]}, #{options[:center][:latlng][1]}], #{options[:center][:zoom]})"
+      end
       if options[:markers]
         options[:markers].each do |marker|
           output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map)"
@@ -29,6 +31,19 @@ module Leaflet
            fillOpacity: #{circle[:fillOpacity]}
         }).addTo(map);"
         end
+      end
+
+      if options[:polylines]
+         options[:polylines].each do |polyline|
+           _output = "L.polyline(#{polyline[:latlngs]}"
+           _output << "," + polyline[:options].to_json if polyline[:options]
+           _output << ").addTo(map);"
+           output << _output.gsub(/\n/,'')
+         end
+      end
+
+      if options[:fitbounds]
+        output << "map.fitBounds(L.latLngBounds(#{options[:fitbounds]}));"
       end
 
       output << "L.tileLayer('#{options[:tile_layer]}', {
