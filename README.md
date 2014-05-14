@@ -47,12 +47,14 @@ Leaflet.attribution = "Your attribution statement"
 Leaflet.max_zoom = 18
 ```
 
-You will then be able to call the helper in a view like so:
+You will then be able to call the helper in a view, and ensure that the helper is inside an erb tag like so:
 ```ruby
-map(:center => {
+<div id="map">
+  <%= map(:center => {
     :latlng => [51.52238797921441, -0.08366235665359283],
     :zoom => 18
-})
+  }) %>
+</div>
 ```
 
 You can also add any number of markers like so:
