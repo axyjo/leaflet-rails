@@ -47,7 +47,7 @@ Leaflet.attribution = "Your attribution statement"
 Leaflet.max_zoom = 18
 ```
 
-You will then be able to call the helper in a view, and ensure that the helper is inside an erb tag like so:
+You will then be able to call the ```#map``` helper method in a view, and make sure that the helper method is inside an erb tag like so:
 ```ruby
 <div id="map">
   <%= map(:center => {
@@ -87,7 +87,7 @@ map(:center => {
 )
 ```
 
-If you want to override the map settings you have set in the initializer, you can also add them to the helper:
+If you want to override the map settings you have set in the initializer, you can also add them to the helper method:
 
 ```ruby
 map(:center => {
@@ -100,7 +100,7 @@ map(:center => {
 )
 ```
 
-If you want to have multiple maps on same page , you should add unique container_id in helper for each map:
+If you want to have multiple maps on same page , you should add unique container_id in helper method for each map:
 
 ```ruby
 map(:container_id => "first_map", :center => {
@@ -116,4 +116,3 @@ map(:container_id => "second_map", :center => {
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/axyjo/leaflet-rails/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
