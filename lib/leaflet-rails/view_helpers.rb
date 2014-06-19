@@ -1,3 +1,4 @@
+require 'active_support/inflector'
 module Leaflet
   module ViewHelpers
 
@@ -64,7 +65,7 @@ module Leaflet
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
           options.each do |key, value|
-            output << "#{key}: '#{value}',"
+            output << "#{key.to_s.camelize(:lower)}: '#{value}',"
           end
  
       output << "}).addTo(map)"
