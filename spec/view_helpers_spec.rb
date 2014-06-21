@@ -115,7 +115,6 @@ describe Leaflet::ViewHelpers do
                :icon => icon_options
            }
        ])
-    puts result
     expected_icon_def_1 = "var #{icon_options[:name]}0 = L.icon({iconUrl: '#{icon_options[:icon_url]}', shadowUrl: '#{icon_options[:shadow_url]}', iconSize: #{icon_options[:icon_size]}, shadowSize: #{icon_options[:shadow_size]}, iconAnchor: #{icon_options[:icon_anchor]}, shadowAnchor: #{icon_options[:shadow_anchor]}, popupAnchor: #{icon_options[:popup_anchor]}})"
     expected_icon_def_2 = "var #{icon_options[:name]}1 = L.icon({iconUrl: '#{icon_options[:icon_url]}', shadowUrl: '#{icon_options[:shadow_url]}', iconSize: #{icon_options[:icon_size]}, shadowSize: #{icon_options[:shadow_size]}, iconAnchor: #{icon_options[:icon_anchor]}, shadowAnchor: #{icon_options[:shadow_anchor]}, popupAnchor: #{icon_options[:popup_anchor]}})"
     result.should include(expected_icon_def_1)
@@ -124,6 +123,25 @@ describe Leaflet::ViewHelpers do
     result.should match(/marker = L\.marker\(\[51.54238797921441, -0.08566235665359283\], \{icon: house\d+\}\).addTo\(map\)/)
     result.should match(/marker\.bindPopup\('Hello!'\)/)
     result.should match(/marker\.bindPopup\('Farewell!'\)/)
+  end
+
+  it 'should have defaults for icon options' do
+    icon_options = { :icon_url => 'images/house.png'}
+    result = @view.map(:center => {
+        :latlng => [51.52238797921441, -0.08366235665359283],
+        :zoom => 18
+    },
+                       :markers => [
+                           {
+                               :latlng => [51.52238797921441, -0.08366235665359283],
+                               :popup => "Hello!",
+                               :icon => icon_options
+                           }
+                       ])
+    expected_icon_def = "var icon0 = L.icon({iconUrl: '#{icon_options[:icon_url]}', shadowUrl: '', iconSize: [], shadowSize: [], iconAnchor: [], shadowAnchor: [], popupAnchor: []})"
+    result.should include(expected_icon_def)
+    result.should match(/marker = L\.marker\(\[51.52238797921441, -0.08366235665359283\], \{icon: icon\d+\}\).addTo\(map\)/)
+    result.should match(/marker\.bindPopup\('Hello!'\)/)
   end
   
   it 'should override the method configuration options if set' do
