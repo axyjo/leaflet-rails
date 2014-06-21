@@ -131,14 +131,14 @@ describe Leaflet::ViewHelpers do
         :latlng => [51.52238797921441, -0.08366235665359283],
         :zoom => 18
     },
-                       :markers => [
-                           {
-                               :latlng => [51.52238797921441, -0.08366235665359283],
-                               :popup => "Hello!",
-                               :icon => icon_options
-                           }
-                       ])
-    expected_icon_def = "var icon0 = L.icon({iconUrl: '#{icon_options[:icon_url]}', shadowUrl: '', iconSize: [], shadowSize: [], iconAnchor: [], shadowAnchor: [], popupAnchor: []})"
+     :markers => [
+         {
+             :latlng => [51.52238797921441, -0.08366235665359283],
+             :popup => "Hello!",
+             :icon => icon_options
+         }
+     ])
+    expected_icon_def = "var icon0 = L.icon({iconUrl: '#{icon_options[:icon_url]}', shadowUrl: '', iconSize: [], shadowSize: [], iconAnchor: [0, 0], shadowAnchor: [0, 0], popupAnchor: [0, 0]})"
     result.should include(expected_icon_def)
     result.should match(/marker = L\.marker\(\[51.52238797921441, -0.08366235665359283\], \{icon: icon\d+\}\).addTo\(map\)/)
     result.should match(/marker\.bindPopup\('Hello!'\)/)

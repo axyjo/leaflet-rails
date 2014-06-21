@@ -67,9 +67,9 @@ module Leaflet
       settings[:shadow_url] = '' if settings[:shadow_url].nil?
       settings[:icon_size] = [] if settings[:icon_size].nil?
       settings[:shadow_size] = [] if settings[:shadow_size].nil?
-      settings[:icon_anchor] = [] if settings[:icon_anchor].nil?
-      settings[:shadow_anchor] = [] if settings[:shadow_anchor].nil?
-      settings[:popup_anchor] = [] if settings[:popup_anchor].nil?
+      settings[:icon_anchor] = [0, 0] if settings[:icon_anchor].nil?
+      settings[:shadow_anchor] = [0, 0] if settings[:shadow_anchor].nil?
+      settings[:popup_anchor] = [0, 0] if settings[:popup_anchor].nil?
       return settings
     end
   end
