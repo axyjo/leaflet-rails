@@ -8,7 +8,7 @@
 require 'simplecov'
 require 'simplecov-rcov'
 
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+# SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))

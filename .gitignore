@@ -6,3 +6,6 @@ pkg/*
 /.rspec
 /coverage/
 /log/
+.idea/*
+.ruby-gemset
+.ruby-version
