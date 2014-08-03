@@ -47,6 +47,13 @@ Leaflet.attribution = "Your attribution statement"
 Leaflet.max_zoom = 18
 ```
 
+If you are using a tile layer which requires non-default subdomains such as [MapQuest-OSM Tiles](http://developer.mapquest.com/web/products/open/map), you can set the subdomains like this:
+
+```ruby
+Leaflet.tile_layer = "http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png"
+Leaflet.subdomains = ['otile1', 'otile2', 'otile3', 'otile4']
+```
+
 You will then be able to call the ```#map``` helper method in a view, and make sure that the helper method is inside an erb tag like so:
 ```ruby
 <div id="map">

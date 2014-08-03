@@ -6,6 +6,7 @@ module Leaflet
       options[:tile_layer] ||= Leaflet.tile_layer
       options[:attribution] ||= Leaflet.attribution
       options[:max_zoom] ||= Leaflet.max_zoom
+      options[:subdomains] ||= Leaflet.subdomains
       options[:container_id] ||= 'map'
 
       tile_layer = options.delete(:tile_layer) || Leaflet.tile_layer
@@ -64,11 +65,17 @@ module Leaflet
       output << "L.tileLayer('#{tile_layer}', {
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
-          options.each do |key, value|
-            output << "#{key.to_s.camelize(:lower)}: '#{value}',"
-          end
- 
+      
+      if options[:subdomains]
+        output << "    subdomains: #{options[:subdomains]},"
+        options.delete( :subdomains )
+      end
+
+      options.each do |key, value|
+        output << "#{key.to_s.camelize(:lower)}: '#{value}',"
+      end
       output << "}).addTo(map)"
+
       output << "</script>"
       output.join("\n").html_safe
     end
