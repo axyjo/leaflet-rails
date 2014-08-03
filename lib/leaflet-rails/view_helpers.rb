@@ -5,6 +5,7 @@ module Leaflet
       options[:tile_layer] ||= Leaflet.tile_layer
       options[:attribution] ||= Leaflet.attribution
       options[:max_zoom] ||= Leaflet.max_zoom
+      options[:subdomains] ||= Leaflet.subdomains
       options[:container_id] ||= 'map'
 
       output = []
@@ -46,10 +47,13 @@ module Leaflet
         output << "map.fitBounds(L.latLngBounds(#{options[:fitbounds]}));"
       end
 
-      output << "L.tileLayer('#{options[:tile_layer]}', {
-          attribution: '#{options[:attribution]}',
-          maxZoom: #{options[:max_zoom]}
-      }).addTo(map)"
+      output << "L.tileLayer('#{options[:tile_layer]}', {"
+      output << "    attribution: '#{options[:attribution]}',"
+      if options[:subdomains]
+        output << "    subdomains: #{options[:subdomains]},"
+      end
+      output << "    maxZoom: #{options[:max_zoom]}"
+      output << "}).addTo(map)"
       output << "</script>"
       output.join("\n").html_safe
     end
