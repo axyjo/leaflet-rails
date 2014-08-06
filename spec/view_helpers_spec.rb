@@ -79,6 +79,26 @@ describe Leaflet::ViewHelpers do
   	  result.should match(/maxZoom: 4/)
   end
 
+  it 'should pass any configuration options to L.tileLayer if set' do
+    result = @view.map(:center => {
+        :latlng => [51.52238797921441, -0.08366235665359283],
+        :zoom => 18
+      },
+      :tile_layer => "http://{s}.someotherdomain.com/blabla/{z}/{x}/{y}.png",
+      :attribution => "Some other attribution text",
+      :max_zoom => 4,
+      :some_key => 'some value',
+      :key2 => 42
+      )
+
+      result.should match(/L.tileLayer\('http:\/\/{s}.someotherdomain\.com\/blabla\/{z}\/{x}\/{y}\.png'/)
+      result.should match(/attribution: 'Some other attribution text'/)
+      result.should match(/maxZoom: 4/)
+      result.should match(/someKey: 'some value'/)
+      result.should match(/key2: '42'/)
+
+  end
+
   it 'should have multiple map on single page' do
     result = @view.map(:container_id => "first_map", :center => {
               :latlng => [51.52238797921441, -0.08366235665359283],
