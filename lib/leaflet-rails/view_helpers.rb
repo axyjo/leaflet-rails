@@ -31,8 +31,14 @@ module Leaflet
       end
 
       if markers
-        markers.each do |marker|
-          output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map)"
+        markers.each_with_index do |marker, index|
+          if marker[:icon]
+            icon_settings = prep_icon_settings(marker[:icon])
+            output << "var #{icon_settings[:name]}#{index} = L.icon({iconUrl: '#{icon_settings[:icon_url]}', shadowUrl: '#{icon_settings[:shadow_url]}', iconSize: #{icon_settings[:icon_size]}, shadowSize: #{icon_settings[:shadow_size]}, iconAnchor: #{icon_settings[:icon_anchor]}, shadowAnchor: #{icon_settings[:shadow_anchor]}, popupAnchor: #{icon_settings[:popup_anchor]}})"
+            output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}], {icon: #{icon_settings[:name]}#{index}}).addTo(map)"
+          else
+            output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map)"
+          end          
           if marker[:popup]
             output << "marker.bindPopup('#{marker[:popup]}')"
           end
@@ -80,6 +86,18 @@ module Leaflet
       output.join("\n").html_safe
     end
 
+    private
+
+    def prep_icon_settings(settings)
+      settings[:name] = 'icon' if settings[:name].nil? or settings[:name].blank?
+      settings[:shadow_url] = '' if settings[:shadow_url].nil?
+      settings[:icon_size] = [] if settings[:icon_size].nil?
+      settings[:shadow_size] = [] if settings[:shadow_size].nil?
+      settings[:icon_anchor] = [0, 0] if settings[:icon_anchor].nil?
+      settings[:shadow_anchor] = [0, 0] if settings[:shadow_anchor].nil?
+      settings[:popup_anchor] = [0, 0] if settings[:popup_anchor].nil?
+      return settings
+    end
   end
 
 end
