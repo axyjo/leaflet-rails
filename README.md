@@ -78,6 +78,21 @@ map(:center => {
 )
 ```
 
+To automatically zoom and position the map so all your markers are visible when it displays, add the ```fit_to_markers``` option:
+```ruby
+map(
+  :markers => [
+     {
+       :latlng => [51.52238797921441, -0.08366235665359283],
+       :popup => "Hello!"
+     }
+  ].
+  :fit_to_markers => true
+)
+```
+
+If you specify both ```fit_to_markers``` and ```fitbounds``` on a map, the value of ```fitbounds``` will take precendence.
+
 Adding a `:popup` element to a marker hash will also generate a popup for a maker:
 
 ```ruby
