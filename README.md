@@ -67,12 +67,10 @@ Leaflet.subdomains = ['otile1', 'otile2', 'otile3', 'otile4']
 
 You will then be able to call the ```#map``` helper method in a view, and make sure that the helper method is inside an erb tag like so:
 ```ruby
-<div id="map">
-  <%= map(:center => {
-    :latlng => [51.52238797921441, -0.08366235665359283],
-    :zoom => 18
-  }) %>
-</div>
+<%= map(:center => {
+  :latlng => [51.52238797921441, -0.08366235665359283],
+  :zoom => 18
+}) %>
 ```
 
 You can also add any number of markers like so:
