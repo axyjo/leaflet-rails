@@ -103,6 +103,7 @@ module Leaflet
       settings[:popup_anchor] = [0, 0] if settings[:popup_anchor].nil?
       return settings
     end
+
     def prep_awesome_marker_settings(settings)
       settings[:name] = 'home' if settings[:name].blank? #icon name, corresponds to 'icon' option in awesomeMarker
       settings[:prefix] = 'glyphicon' if settings[:prefix].blank? #'fa' for font-awesome or 'glyphicon' for bootstrap 3
