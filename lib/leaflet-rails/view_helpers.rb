@@ -33,12 +33,17 @@ module Leaflet
       if markers
         markers.each_with_index do |marker, index|
           if marker[:icon]
-            icon_settings = prep_icon_settings(marker[:icon])
-            output << "var #{icon_settings[:name]}#{index} = L.icon({iconUrl: '#{icon_settings[:icon_url]}', shadowUrl: '#{icon_settings[:shadow_url]}', iconSize: #{icon_settings[:icon_size]}, shadowSize: #{icon_settings[:shadow_size]}, iconAnchor: #{icon_settings[:icon_anchor]}, shadowAnchor: #{icon_settings[:shadow_anchor]}, popupAnchor: #{icon_settings[:popup_anchor]}})"
+            if marker[:awesome_marker]
+              icon_settings = prep_awesome_marker_settings(marker[:icon])
+              output << "var #{icon_settings[:name]}#{index} = L.AwesomeMarkers.icon({icon: '#{icon_settings[:name]}', prefix: '#{icon_settings[:prefix]}', markerColor: '#{icon_settings[:marker_color]}', iconColor:  '#{icon_settings[:icon_color]}', spin: '#{icon_settings[:spin].to_s}', extraClasses: '#{icon_settings[:extra_classes]}'})"
+            else
+              icon_settings = prep_icon_settings(marker[:icon])
+              output << "var #{icon_settings[:name]}#{index} = L.icon({iconUrl: '#{icon_settings[:icon_url]}', shadowUrl: '#{icon_settings[:shadow_url]}', iconSize: #{icon_settings[:icon_size]}, shadowSize: #{icon_settings[:shadow_size]}, iconAnchor: #{icon_settings[:icon_anchor]}, shadowAnchor: #{icon_settings[:shadow_anchor]}, popupAnchor: #{icon_settings[:popup_anchor]}})"
+            end
             output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}], {icon: #{icon_settings[:name]}#{index}}).addTo(map)"
           else
             output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map)"
-          end          
+          end
           if marker[:popup]
             output << "marker.bindPopup('#{marker[:popup]}')"
           end
@@ -71,7 +76,7 @@ module Leaflet
       output << "L.tileLayer('#{tile_layer}', {
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
-      
+
       if options[:subdomains]
         output << "    subdomains: #{options[:subdomains]},"
         options.delete( :subdomains )
@@ -98,6 +103,16 @@ module Leaflet
       settings[:popup_anchor] = [0, 0] if settings[:popup_anchor].nil?
       return settings
     end
+    def prep_awesome_marker_settings(settings)
+      settings[:name] = 'home' if settings[:name].blank? #icon name, corresponds to 'icon' option in awesomeMarker
+      settings[:prefix] = 'glyphicon' if settings[:prefix].blank? #'fa' for font-awesome or 'glyphicon' for bootstrap 3
+      settings[:marker_color] = 'blue' if settings[:marker_color].blank? # 'red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpuple', 'cadetblue'
+      settings[:icon_color] = 'white' if settings[:icon_color].blank? #'white'	'white', 'black' or css code (hex, rgba etc)
+      settings[:spin] = 'false' if settings[:spin].nil? #Make the icon spin 'true' or 'false'. Font-awesome required
+      settings[:extra_classes] = '' #Allow additional custom configuration.
+      return settings
+    end
   end
+
 
 end
