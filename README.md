@@ -135,6 +135,18 @@ Awesome Markers
 
 Using the AwesomeMarkers plugin originally from https://github.com/lvoogdt/Leaflet.awesome-markers
 
+Open your application-wide CSS file (`app/assets/stylesheets/application.css`) and add the following line as a comment, after you've required leaflet:
+
+```
+= require leaflet.awesome-markers
+```
+
+After that, open your application-wide Javascript file (typically `app/assets/javascripts/application.js`) and add the following line after you've required leaflet:
+
+```
+= require leaflet.awesome-markers
+```
+
 Add an AwesomeMarker with the house icon, in blue.
 
 ``` 
