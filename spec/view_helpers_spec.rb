@@ -145,7 +145,6 @@ describe Leaflet::ViewHelpers do
   end
 
   it 'allows you to define some markers as awesomeMarkers' do
-    icon_options = { :icon_url => 'images/house.png'}
     result = @view.map(:center => {
         :latlng => [51.52238797921441, -0.08366235665359283],
         :zoom => 18
@@ -164,6 +163,26 @@ describe Leaflet::ViewHelpers do
     result.should include("var coffee0 = L.AwesomeMarkers.icon({icon: 'coffee', prefix: 'glyphicon', markerColor: 'blue', iconColor:  'white', spin: 'false', extraClasses: ''})")
     result.should match(/marker = L\.marker\(\[51.52238797921441, -0.08366235665359283\], \{icon: coffee0\}\).addTo\(map\)/)
     result.should match(/marker\.bindPopup\('Hello!'\)/)
+  end
+
+
+  it 'allows you to define icon name which includes a -' do
+    result = @view.map(:center => {
+        :latlng => [51.52238797921441, -0.08366235665359283],
+        :zoom => 18
+    },
+     :markers => [
+       {
+         :awesome_marker => true,
+         :icon => {
+           :name => 'arrow-up',
+           :marker_color => 'blue'
+         },
+         :latlng => [51.52238797921441, -0.08366235665359283]
+       }
+     ])
+    result.should include("var arrowup0 = L.AwesomeMarkers.icon({icon: 'arrow-up', prefix: 'glyphicon', markerColor: 'blue', iconColor:  'white', spin: 'false', extraClasses: ''})")
+    result.should match(/marker = L\.marker\(\[51.52238797921441, -0.08366235665359283\], \{icon: arrowup0\}\).addTo\(map\)/)
   end
 
 
