@@ -9,3 +9,4 @@ pkg/*
 .idea/*
 .ruby-gemset
 .ruby-version
+.project
