@@ -18,6 +18,7 @@ module Leaflet
       markers = options.delete(:markers)
       circles = options.delete(:circles)
       polylines = options.delete(:polylines)
+      polygons = options.delete(:polygons)
       fitbounds = options.delete(:fitbounds)
 
 
@@ -38,7 +39,7 @@ module Leaflet
             output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}], {icon: #{icon_settings[:name]}#{index}}).addTo(map)"
           else
             output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map)"
-          end          
+          end
           if marker[:popup]
             output << "marker.bindPopup('#{marker[:popup]}')"
           end
@@ -64,6 +65,15 @@ module Leaflet
          end
       end
 
+      if polygons
+         polygons.each do |polygon|
+           _output = "L.polygon(#{polygon[:latlngs]}"
+           _output << "," + polygon[:options].to_json if polygon[:options]
+           _output << ").addTo(map);"
+           output << _output.gsub(/\n/,'')
+         end
+      end
+
       if fitbounds
         output << "map.fitBounds(L.latLngBounds(#{fitbounds}));"
       end
@@ -71,7 +81,7 @@ module Leaflet
       output << "L.tileLayer('#{tile_layer}', {
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
-      
+
       if options[:subdomains]
         output << "    subdomains: #{options[:subdomains]},"
         options.delete( :subdomains )
