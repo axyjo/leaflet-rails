@@ -151,11 +151,13 @@ describe Leaflet::ViewHelpers do
 	  	},
 	  	:tile_layer => "http://{s}.someotherdomain.com/blabla/{z}/{x}/{y}.png",
 	  	:attribution => "Some other attribution text",
+      :min_zoom => 1,
 	  	:max_zoom => 4
 	  	)
 	  
   	  result.should match(/L.tileLayer\('http:\/\/{s}.someotherdomain\.com\/blabla\/{z}\/{x}\/{y}\.png'/)
   	  result.should match(/attribution: 'Some other attribution text'/)
+      result.should match(/minZoom: 1/)
   	  result.should match(/maxZoom: 4/)
   end
 

@@ -11,6 +11,7 @@ module Leaflet
 
       tile_layer = options.delete(:tile_layer) || Leaflet.tile_layer
       attribution = options.delete(:attribution) || Leaflet.attribution
+      min_zoom = options.delete(:min_zoom) || 0
       max_zoom = options.delete(:max_zoom) || Leaflet.max_zoom
       container_id = options.delete(:container_id) || 'map'
       no_container = options.delete(:no_container)
@@ -70,7 +71,8 @@ module Leaflet
 
       output << "L.tileLayer('#{tile_layer}', {
           attribution: '#{attribution}',
-          maxZoom: #{max_zoom},"
+          maxZoom: #{max_zoom},
+          minZoom: #{min_zoom},"
       
       if options[:subdomains]
         output << "    subdomains: #{options[:subdomains]},"
