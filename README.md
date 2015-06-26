@@ -112,6 +112,7 @@ map(:center => {
   },
   :tile_layer => "http://{s}.somedomain.com/somepath/{z}/{x}/{y}.png",
   :attribution => "Some other attribution text",
+  :min_zoom => 1,
   :max_zoom => 4
 )
 ```
