@@ -44,6 +44,7 @@ leaflet-rails tries to keep version parity with leaflet.js. However, this isn't 
 | leaflet-rails  | leaflet.js | Reason |
 | ------------- | ------------- | ------|
 | 0.7.4  | 0.7.3  | Requested in #33 because of large gap between master and rubygems.org.|
+| 0.7.5  | 0.7.5  | leaflet.js 0.7.4 was reverted. |
 
 
 Helpers
