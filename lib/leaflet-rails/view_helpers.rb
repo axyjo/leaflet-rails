@@ -24,23 +24,23 @@ module Leaflet
       output = []
       output << "<div id='#{container_id}'></div>" unless no_container
       output << "<script>"
-      output << "var map = L.map('#{container_id}')"
+      output << "var map = L.map('#{container_id}');"
 
       if center
-        output << "map.setView([#{center[:latlng][0]}, #{center[:latlng][1]}], #{center[:zoom]})"
+        output << "map.setView([#{center[:latlng][0]}, #{center[:latlng][1]}], #{center[:zoom]});"
       end
 
       if markers
         markers.each_with_index do |marker, index|
           if marker[:icon]
             icon_settings = prep_icon_settings(marker[:icon])
-            output << "var #{icon_settings[:name]}#{index} = L.icon({iconUrl: '#{icon_settings[:icon_url]}', shadowUrl: '#{icon_settings[:shadow_url]}', iconSize: #{icon_settings[:icon_size]}, shadowSize: #{icon_settings[:shadow_size]}, iconAnchor: #{icon_settings[:icon_anchor]}, shadowAnchor: #{icon_settings[:shadow_anchor]}, popupAnchor: #{icon_settings[:popup_anchor]}})"
-            output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}], {icon: #{icon_settings[:name]}#{index}}).addTo(map)"
+            output << "var #{icon_settings[:name]}#{index} = L.icon({iconUrl: '#{icon_settings[:icon_url]}', shadowUrl: '#{icon_settings[:shadow_url]}', iconSize: #{icon_settings[:icon_size]}, shadowSize: #{icon_settings[:shadow_size]}, iconAnchor: #{icon_settings[:icon_anchor]}, shadowAnchor: #{icon_settings[:shadow_anchor]}, popupAnchor: #{icon_settings[:popup_anchor]}});"
+            output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}], {icon: #{icon_settings[:name]}#{index}}).addTo(map);"
           else
-            output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map)"
-          end          
+            output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map);"
+          end
           if marker[:popup]
-            output << "marker.bindPopup('#{marker[:popup]}')"
+            output << "marker.bindPopup('#{marker[:popup]}');"
           end
         end
       end
@@ -71,7 +71,7 @@ module Leaflet
       output << "L.tileLayer('#{tile_layer}', {
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
-      
+
       if options[:subdomains]
         output << "    subdomains: #{options[:subdomains]},"
         options.delete( :subdomains )
@@ -80,7 +80,7 @@ module Leaflet
       options.each do |key, value|
         output << "#{key.to_s.camelize(:lower)}: '#{value}',"
       end
-      output << "}).addTo(map)"
+      output << "}).addTo(map);"
 
       output << "</script>"
       output.join("\n").html_safe
