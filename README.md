@@ -124,5 +124,24 @@ map(:container_id => "second_map", :center => {
 })
 ```
 
+If you want a custom marker icon, provide at least the path to the marker image:
+
+```ruby
+map(
+  :center => {
+    latlng: [51.52238797921441, -0.08366235665359283],
+    zoom: 16
+  },
+  markers: [
+    {
+      latlng: [51.52238797921441, -0.08366235665359283],
+      icon: {
+        icon_url: "path/to/your/marker.png"
+      }
+    }
+  ]
+)
+```
+
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/axyjo/leaflet-rails/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
