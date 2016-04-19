@@ -124,5 +124,3 @@ map(:container_id => "second_map", :center => {
 })
 ```
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/axyjo/leaflet-rails/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
