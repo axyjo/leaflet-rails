@@ -14,12 +14,11 @@ SimpleCov.start
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 
-require "action_controller/railtie"
-require "rails/test_unit/railtie"
-
-require "leaflet-rails"
+require 'action_controller/railtie'
+require 'rails/test_unit/railtie'
+require 'leaflet-rails'
 
 module Test
   class Application < ::Rails::Application
