@@ -27,6 +27,22 @@ describe Leaflet::ViewHelpers do
 	  expect(result).to match(/attribution: 'Some attribution statement'/)
 	  expect(result).to match(/maxZoom: 18/)
   end
+  
+  it 'should set subdomains if present' do
+    result = @view.map(:center => {
+	      :latlng => [51.52238797921441, -0.08366235665359283],
+	      :zoom => 18
+	  	}, :subdomains => ['otile1', 'otile2'])
+    expect(result).to match(/subdomains: \["otile1", "otile2"\]/)
+  end
+  
+  it 'should not set subdomains if nil' do
+    result = @view.map(:center => {
+	      :latlng => [51.52238797921441, -0.08366235665359283],
+	      :zoom => 18
+	  	}, :subdomains => nil)
+    expect(result).not_to match(/subdomains:/)
+  end
 
   it 'should generate a basic map with the correct latitude, longitude and zoom' do
     result = @view.map(:center => {
