@@ -72,9 +72,8 @@ module Leaflet
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
 
-      if options[:subdomains]
-        output << "    subdomains: #{options[:subdomains]},"
-        options.delete( :subdomains )
+      if subdomains = options.delete(:subdomains)
+        output << "    subdomains: #{subdomains},"
       end
 
       options.each do |key, value|
