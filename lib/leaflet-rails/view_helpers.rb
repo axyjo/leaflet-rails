@@ -40,7 +40,7 @@ module Leaflet
             output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map);"
           end
           if marker[:popup]
-            output << "marker.bindPopup('#{marker[:popup]}');"
+            output << "marker.bindPopup('#{escape_javascript marker[:popup]}');"
           end
         end
       end
@@ -72,9 +72,8 @@ module Leaflet
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
 
-      if options[:subdomains]
-        output << "    subdomains: #{options[:subdomains]},"
-        options.delete( :subdomains )
+      if subdomains = options.delete(:subdomains)
+        output << "    subdomains: #{subdomains},"
       end
 
       options.each do |key, value|
