@@ -1,5 +1,5 @@
-require "leaflet-rails/version"
-require "leaflet-rails/view_helpers"
+require 'leaflet-rails/version'
+require 'leaflet-rails/view_helpers'
 
 module Leaflet
   mattr_accessor :tile_layer
