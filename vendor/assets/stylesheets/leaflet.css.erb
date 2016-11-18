@@ -1,3 +1,6 @@
+//= depend_on_asset "layers.png"
+//= depend_on_asset "layers-2x.png"
+
 /* required styles */
 
 .leaflet-pane,
@@ -5,8 +8,8 @@
 .leaflet-marker-icon,
 .leaflet-marker-shadow,
 .leaflet-tile-container,
-.leaflet-pane > svg,
-.leaflet-pane > canvas,
+.leaflet-map-pane svg,
+.leaflet-map-pane canvas,
 .leaflet-zoom-box,
 .leaflet-image-layer,
 .leaflet-layer {
@@ -16,6 +19,8 @@
 	}
 .leaflet-container {
 	overflow: hidden;
+	-ms-touch-action: none;
+	touch-action: none;
 	}
 .leaflet-tile,
 .leaflet-marker-icon,
@@ -43,7 +48,6 @@
 /* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
 .leaflet-container .leaflet-overlay-pane svg,
 .leaflet-container .leaflet-marker-pane img,
-.leaflet-container .leaflet-shadow-pane img,
 .leaflet-container .leaflet-tile-pane img,
 .leaflet-container img.leaflet-image-layer {
 	max-width: none !important;
@@ -332,12 +336,12 @@
 	border-radius: 5px;
 	}
 .leaflet-control-layers-toggle {
-	background-image: url(<%= asset_path 'layers.png'%>);
+	background-image: url(<%= asset_path 'layers.png' %>);
 	width: 36px;
 	height: 36px;
 	}
 .leaflet-retina .leaflet-control-layers-toggle {
-	background-image: url(<%= asset_path 'layers-2x.png'%>);
+	background-image: url(<%= asset_path 'layers-2x.png' %>);
 	background-size: 26px 26px;
 	}
 .leaflet-touch .leaflet-control-layers-toggle {
@@ -379,7 +383,7 @@
 .leaflet-default-icon-path {
 	background-image: url(<%= asset_path 'marker-icon.png'%>);
 	}
-
+	
 
 /* attribution and scale controls */
 
