@@ -6,24 +6,9 @@
 
 L.Icon.Default = L.Icon.Default.extend({
 	_getIconUrl: function (name) {
-		var key = name + 'Url';
-
-		if (this.options[key]) {
-			return this.options[key];
-		}
-
 		var paths = <%= Hash[icons.map{|i| [i, asset_path('marker-' + i)]}].to_json %>;
-		var path = paths[name + (L.Browser.retina && name === 'icon' ? '-2x' : '') + '.png'];
+		return paths[name + '.png'];
+	},
 
-		if (!path) {
-			throw new Error('Couldn\'t find path for image ' + path + '.');
-		}
-
-		return path;
-	}
+	_detectIconPath: function () { }
 });
-
-L.Icon.Default.imagePath = (function () {
-  return '';
-}());
-
