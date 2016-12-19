@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.email       = ["joshi.a@gmail.com"]
   s.license     = "BSD"
   s.homepage    = ""
-  s.summary     = %q{Use leaflet.js with Rails 4.}
-  s.description = %q{This gem provides the leaflet.js map display library for your Rails 4 application.}
+  s.summary     = %q{Use leaflet.js with Rails 4/5.}
+  s.description = %q{This gem provides the leaflet.js map display library for your Rails 4/5 application.}
 
   s.rubyforge_project = "leaflet-rails"
 
