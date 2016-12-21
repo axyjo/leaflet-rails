@@ -4,11 +4,10 @@
 //= require leaflet-src
 <% icons = ['icon-2x.png', 'shadow.png', 'icon.png'] %>
 
-L.Icon.Default = L.Icon.Default.extend({
-	_getIconUrl: function (name) {
-		var paths = <%= Hash[icons.map{|i| [i, asset_path('marker-' + i)]}].to_json %>;
-		return paths[name + '.png'];
-	},
+L.Icon.Default.imagePath = (function () {
+  return ' ';
+}());
 
-	_detectIconPath: function () { }
-});
+L.Icon.Default.prototype.options.iconUrl = '<%= asset_path 'marker-icon.png'%>';
+L.Icon.Default.prototype.options.iconRetinaUrl = '<%= asset_path 'marker-icon-2x.png'%>';
+L.Icon.Default.prototype.options.shadowUrl = '<%= asset_path 'marker-shadow.png'%>';
