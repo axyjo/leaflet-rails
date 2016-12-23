@@ -10,7 +10,9 @@ module Leaflet
   module Rails
     class Engine < ::Rails::Engine
       initializer 'leaflet-rails.precompile' do |app|
-        app.config.assets.precompile += %w(layers-2x.png layers.png marker-icon-2x.png marker-icon.png marker-shadow.png)
+        if app.config.respond_to? (:assets)
+          app.config.assets.precompile += %w(layers-2x.png layers.png marker-icon-2x.png marker-icon.png marker-shadow.png)
+        end
       end
 
       initializer 'leaflet-rails.helpers' do
