@@ -6276,7 +6276,7 @@ L.Icon.Default = L.Icon.extend({
 		document.body.removeChild(el);
 
 		return path.indexOf('url') === 0 ?
-			path.replace(/^url\([\"\']?/, '').replace(/marker-icon\.png[\"\']?\)$/, '') : '';
+			path.replace(/^url\([\"\']?/, '').replace(/marker-icon-<%= Rails.application.assets.find_asset('marker-icon.png').digest %>\.png[\"\']?\)$/, '') : '';
 	}
 });
 
