@@ -18,6 +18,7 @@ module Leaflet
       markers = options.delete(:markers)
       circles = options.delete(:circles)
       polylines = options.delete(:polylines)
+      geojsons = options.delete(:geojsons)
       fitbounds = options.delete(:fitbounds)
 
 
@@ -59,6 +60,15 @@ module Leaflet
          polylines.each do |polyline|
            _output = "L.polyline(#{polyline[:latlngs]}"
            _output << "," + polyline[:options].to_json if polyline[:options]
+           _output << ").addTo(map);"
+           output << _output.gsub(/\n/,'')
+         end
+      end
+
+      if geojsons
+         geojsons.each do |geojson|
+           _output = "L.geoJSON(#{geojson[:geojson]}"
+           _output << "," + geojson[:options].to_json if geojson[:options]
            _output << ").addTo(map);"
            output << _output.gsub(/\n/,'')
          end
