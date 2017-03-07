@@ -381,7 +381,7 @@
 
 /* Default icon URLs */
 .leaflet-default-icon-path {
-	background-image: url(<%= asset_path 'marker-icon.png' %>);
+	background-image: url(<%= Rails.application.assets.find_asset("marker-icon.png").digest_path %>);
 	}
 
 
