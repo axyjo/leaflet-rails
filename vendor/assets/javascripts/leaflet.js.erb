@@ -12,3 +12,8 @@ L.Icon.Default = L.Icon.Default.extend({
 
 	_detectIconPath: function () { }
 });
+L.Marker = L.Marker.extend({
+  options: {
+    icon: new L.Icon.Default()
+  }
+});
