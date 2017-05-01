@@ -1,0 +1,11 @@
+source "http://rubygems.org"
+
+#ruby=1.9.3-p374
+#ruby-gemset=leaflet-rails
+
+# Specify your gem's dependencies in leaflet-rails.gemspec
+gemspec :path => '../'
+
+gem "actionpack", '~> 4.2.0'
+gem "activesupport", '~> 4.2.0'
+gem "railties", '~> 4.2.0'

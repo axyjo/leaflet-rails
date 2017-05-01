@@ -1,14 +1,20 @@
 sudo: false
 language: ruby
 cache: bundler
-rvm:
-  - ruby-head
-  - jruby-head
-  - 2.0.0
-  - 2.1.8
-  - 2.2.4
-  - 2.3.0
 matrix:
+  include:
+    - rvm: 2.0.0
+      gemfile: gemfiles/Gemfile.rails4
+    - rvm: 2.1.8
+      gemfile: gemfiles/Gemfile.rails4
+    - rvm: 2.2.4
+      gemfile: Gemfile
+    - rvm: 2.3.0
+      gemfile: Gemfile
+    - rvm: ruby-head
+      gemfile: Gemfile
+    - rvm: jruby-head
+      gemfile: Gemfile
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
