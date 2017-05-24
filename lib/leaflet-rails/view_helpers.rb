@@ -68,7 +68,14 @@ module Leaflet
       if geojsons
          geojsons.each do |geojson|
            _output = "L.geoJSON(#{geojson[:geojson]}"
-           _output << "," + geojson[:options].to_json if geojson[:options]
+           if geojson[:options]
+             options = geojson[:options]
+             on_each_feature = options.delete(:onEachFeature)
+             if on_each_feature
+               options[:onEachFeature] = ':onEachFeature'
+             end
+             _output << "," + options.to_json.gsub('":onEachFeature"', on_each_feature)
+           end
            _output << ").addTo(map);"
            output << _output.gsub(/\n/,'')
          end
