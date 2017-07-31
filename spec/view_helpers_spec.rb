@@ -227,7 +227,8 @@ describe Leaflet::ViewHelpers do
                     :fillOpacity => 0.5
                   }
                   ])
-    expect(result).to match(/L.circle\(\[\'51.52238797921441\', \'-0.08366235665359283\'\], 12, \{
+    expect(result).to match(/L.circle\(\[51.52238797921441, -0.08366235665359283\], {
+           radius: 12,
            color: \'red\',
            fillColor: \'#f03\',
            fillOpacity: 0.5
