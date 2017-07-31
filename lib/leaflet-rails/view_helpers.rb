@@ -48,12 +48,10 @@ module Leaflet
 
       if circles
         circles.each do |circle|
-          output << "L.circle([#{circle[:latlng][0]}, #{circle[:latlng][1]}], {
-           radius: #{circle[:radius]},
-           color: '#{circle[:color]}',
-           fillColor: '#{circle[:fillColor]}',
-           fillOpacity: #{circle[:fillOpacity]}
-        }).addTo(map);"
+          _output = "L.circle([#{circle[:latlng][0]}, #{circle[:latlng][1]}]"
+          _output << "," + circle[:options].to_json if circle[:options]
+          _output << ").addTo(map);"
+          output << _output.gsub(/\n/,'')
         end
       end
 

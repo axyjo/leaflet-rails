@@ -221,18 +221,17 @@ describe Leaflet::ViewHelpers do
                 :circles => [
                   {
                     :latlng => [51.52238797921441, -0.08366235665359283],
-                    :radius => 12,
-                    :color => 'red',
-                    :fillColor => '#f03',
-                    :fillOpacity => 0.5
+                    options: {
+                      :radius => 12,
+                      :color => 'red',
+                      :weight => 1,
+                      :fillColor => '#f03',
+                      :fillOpacity => 0.5
+                    }
                   }
                   ])
-    expect(result).to match(/L.circle\(\[51.52238797921441, -0.08366235665359283\], {
-           radius: 12,
-           color: \'red\',
-           fillColor: \'#f03\',
-           fillOpacity: 0.5
-        \}\).addTo\(map\)/)
+    regex = Regexp.quote('L.circle([51.52238797921441, -0.08366235665359283],{"radius":12,"color":"red","weight":1,"fillColor":"#f03","fillOpacity":0.5}).addTo(map);')
+    expect(result).to match(regex)
   end
 
   it 'should not create the container tag if no_container is set' do
