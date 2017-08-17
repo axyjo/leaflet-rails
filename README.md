@@ -24,7 +24,7 @@ After that, open your application-wide Javascript file (typically `app/assets/ja
 = require leaflet
 ```
 
-At this point, you may skip the first two steps of the [Leaflet Quick Start guide](http://leafletjs.com/examples/quick-start.html) and start at the third step (adding the map `div` to a view).
+At this point, you may skip the first two steps of the [Leaflet Quick Start guide](http://leafletjs.com/examples/quick-start/) and start at the third step (adding the map `div` to a view).
 
 
 Version Parity
