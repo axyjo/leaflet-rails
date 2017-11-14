@@ -5,15 +5,22 @@
 <% icons = ['icon-2x.png', 'shadow.png', 'icon.png'] %>
 
 L.Icon.Default = L.Icon.Default.extend({
-	_getIconUrl: function (name) {
-		var paths = <%= Hash[icons.map{|i| [i, asset_path('marker-' + i)]}].to_json %>;
-		return paths[name + '.png'];
-	},
+  _getIconUrl: function (name) {
+    var paths = <%= Hash[icons.map{|i| [i, asset_path('marker-' + i)]}].to_json %>;
+    return paths[name + '.png'];
+  },
 
-	_detectIconPath: function () { }
+  _detectIconPath: function () {
+    return '';
+  }
 });
 L.Marker = L.Marker.extend({
   options: {
     icon: new L.Icon.Default()
   }
 });
+
+L.marker = function(latlng, options) {
+  return new L.Marker(latlng, options);
+}
+
