@@ -74,7 +74,7 @@ module Leaflet
              if on_each_feature
                options[:onEachFeature] = ':onEachFeature'
              end
-             _output << "," + options.to_json.gsub('":onEachFeature"', on_each_feature)
+             _output << "," + options.to_json.gsub('":onEachFeature"', on_each_feature || '')
            end
            _output << ").addTo(map);"
            output << _output.gsub(/\n/,'')
