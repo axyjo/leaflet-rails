@@ -212,6 +212,12 @@ describe Leaflet::ViewHelpers do
 
   end
 
+  it 'should use a user-defined javascript map variable name' do
+    result = @view.map(:map_var_name => 'user_defined_name')
+    expect(result).to match(/var\s*user_defined_name\s*=\s*L\.map/)
+    expect(result).to match(/\.addTo\(user_defined_name\);/)
+  end
+
   it 'should generate a map and add a circle' do
     result = @view.map(
                 :container_id => "first_map",
