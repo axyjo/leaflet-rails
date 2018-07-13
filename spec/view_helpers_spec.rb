@@ -36,6 +36,19 @@ describe Leaflet::ViewHelpers do
     expect(result).to match(/subdomains: \["otile1", "otile2"\]/)
   end
   
+  it 'should generate a basic map with the correct scrollWhellZoom option' do
+    result = @view.map(
+      :center => {
+        :latlng => [51.52238797921441, -0.08366235665359283],
+        :zoom => 18
+      },
+      :interaction => {
+        :scrollWheelZoom => false
+      }
+    )
+    result.should match(/var map = L.map\('map', {"scrollWheelZoom":false}\)/)
+  end
+  
   it 'should not set subdomains if nil' do
     result = @view.map(:center => {
 	      :latlng => [51.52238797921441, -0.08366235665359283],

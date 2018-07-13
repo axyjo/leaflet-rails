@@ -8,6 +8,7 @@ module Leaflet
       options[:max_zoom] ||= Leaflet.max_zoom
       options[:subdomains] ||= Leaflet.subdomains
       options[:container_id] ||= 'map'
+      options[:interaction] ||= {}
 
       tile_layer = options.delete(:tile_layer) || Leaflet.tile_layer
       attribution = options.delete(:attribution) || Leaflet.attribution
@@ -20,12 +21,17 @@ module Leaflet
       polylines = options.delete(:polylines)
       geojsons = options.delete(:geojsons)
       fitbounds = options.delete(:fitbounds)
-
+      interaction = options.delete(:interaction)
 
       output = []
       output << "<div id='#{container_id}'></div>" unless no_container
       output << "<script>"
-      output << "var map = L.map('#{container_id}');"
+      
+      if interaction
+        output << "var map = L.map('#{container_id}', #{interaction.to_json});"
+      else
+        output << "var map = L.map('#{container_id}');"
+      end
 
       if center
         output << "map.setView([#{center[:latlng][0]}, #{center[:latlng][1]}], #{center[:zoom]});"
