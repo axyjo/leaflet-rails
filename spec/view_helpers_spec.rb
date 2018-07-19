@@ -27,7 +27,7 @@ describe Leaflet::ViewHelpers do
 	  expect(result).to match(/attribution: 'Some attribution statement'/)
 	  expect(result).to match(/maxZoom: 18/)
   end
-  
+
   it 'should set subdomains if present' do
     result = @view.map(:center => {
 	      :latlng => [51.52238797921441, -0.08366235665359283],
@@ -35,7 +35,7 @@ describe Leaflet::ViewHelpers do
 	  	}, :subdomains => ['otile1', 'otile2'])
     expect(result).to match(/subdomains: \["otile1", "otile2"\]/)
   end
-  
+
   it 'should not set subdomains if nil' do
     result = @view.map(:center => {
 	      :latlng => [51.52238797921441, -0.08366235665359283],
@@ -250,6 +250,13 @@ describe Leaflet::ViewHelpers do
                 :polylines => [{:latlngs => [[51.5, -0.08], [-51.5, 0.08]], :options => {:color => "green"}}]
                 )
     expect(result).to match(Regexp.quote('L.polyline([[51.5, -0.08], [-51.5, 0.08]],{"color":"green"}).addTo(map);'))
+  end
+
+  it 'should generate a map and add a polygon' do
+    result = @view.map(
+                :polygons => [{:latlngs => [[51.5, -0.08], [-51.5, 0.08]], :options => {:color => "green"}}]
+                )
+    expect(result).to match(Regexp.quote('L.polygon([[51.5, -0.08], [51.5, -0.06], [51.5, -0.047]],{"color":"green"}).addTo(map);'))
   end
 
   it 'should generate a map and add fitbounds' do
