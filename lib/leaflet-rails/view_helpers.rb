@@ -3,6 +3,7 @@ module Leaflet
   module ViewHelpers
 
     def map(options)
+
       options[:tile_layer] ||= Leaflet.tile_layer
       options[:attribution] ||= Leaflet.attribution
       options[:max_zoom] ||= Leaflet.max_zoom
@@ -20,12 +21,12 @@ module Leaflet
       polylines = options.delete(:polylines)
       geojsons = options.delete(:geojsons)
       fitbounds = options.delete(:fitbounds)
-
+      subdomains = options.delete(:subdomains)
 
       output = []
       output << "<div id='#{container_id}'></div>" unless no_container
       output << "<script>"
-      output << "var map = L.map('#{container_id}');"
+      output << "var map = L.map('#{container_id}', {#{options.map{|k,v| "#{k}: #{v}"}.join(', ')}});"
 
       if center
         output << "map.setView([#{center[:latlng][0]}, #{center[:latlng][1]}], #{center[:zoom]});"
@@ -57,28 +58,28 @@ module Leaflet
       end
 
       if polylines
-         polylines.each do |polyline|
-           _output = "L.polyline(#{polyline[:latlngs]}"
-           _output << "," + polyline[:options].to_json if polyline[:options]
-           _output << ").addTo(map);"
-           output << _output.gsub(/\n/,'')
-         end
+        polylines.each do |polyline|
+          _output = "L.polyline(#{polyline[:latlngs]}"
+          _output << "," + polyline[:options].to_json if polyline[:options]
+          _output << ").addTo(map);"
+          output << _output.gsub(/\n/,'')
+        end
       end
 
       if geojsons
-         geojsons.each do |geojson|
-           _output = "L.geoJSON(#{geojson[:geojson]}"
-           if geojson[:options]
-             options = geojson[:options]
-             on_each_feature = options.delete(:onEachFeature)
-             if on_each_feature
-               options[:onEachFeature] = ':onEachFeature'
-             end
-             _output << "," + options.to_json.gsub('":onEachFeature"', on_each_feature)
-           end
-           _output << ").addTo(map);"
-           output << _output.gsub(/\n/,'')
-         end
+        geojsons.each do |geojson|
+          _output = "L.geoJSON(#{geojson[:geojson]}"
+          if geojson[:options]
+            options = geojson[:options]
+            on_each_feature = options.delete(:onEachFeature)
+            if on_each_feature
+              options[:onEachFeature] = ':onEachFeature'
+            end
+            _output << "," + options.to_json.gsub('":onEachFeature"', on_each_feature)
+          end
+          _output << ").addTo(map);"
+          output << _output.gsub(/\n/,'')
+        end
       end
 
       if fitbounds
@@ -89,7 +90,7 @@ module Leaflet
           attribution: '#{attribution}',
           maxZoom: #{max_zoom},"
 
-      if subdomains = options.delete(:subdomains)
+      if subdomains
         output << "    subdomains: #{subdomains},"
       end
 
