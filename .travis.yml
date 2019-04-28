@@ -3,13 +3,13 @@ language: ruby
 cache: bundler
 matrix:
   include:
-    - rvm: 2.0.0
-      gemfile: gemfiles/Gemfile.rails4
-    - rvm: 2.1.8
-      gemfile: gemfiles/Gemfile.rails4
-    - rvm: 2.2.4
-      gemfile: Gemfile
     - rvm: 2.3.0
+      gemfile: Gemfile
+    - rvm: 2.4.0
+      gemfile: Gemfile
+    - rvm: 2.5.0
+      gemfile: Gemfile
+    - rvm: 2.6.0
       gemfile: Gemfile
     - rvm: ruby-head
       gemfile: Gemfile
