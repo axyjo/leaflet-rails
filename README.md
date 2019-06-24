@@ -30,7 +30,7 @@ At this point, you may skip the first two steps of the [Leaflet Quick Start guid
 Version Parity
 ==============
 
-leaflet-rails tries to keep version parity with leaflet.js. However, this isn't possible in all cases. Discrepancies have been noted below.
+`leaflet-rails` keeps version parity with the upstream `leaflet.js` library. Before v0.7.7 the versions were not always in sync, as noted in the table below.
 
 | leaflet-rails  | leaflet.js | Reason |
 | ------------- | ------------- | ------|
