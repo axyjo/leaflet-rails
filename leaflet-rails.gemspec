@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "leaflet-rails"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files         = Dir["lib/**/*", "vendor/**/*"]
+  s.test_files    = Dir["spec/**/*"]
+  s.executables   = []
   s.require_paths = ["lib"]
 
   s.add_dependency "rails", '>= 4.2.0'
