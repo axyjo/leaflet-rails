@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "leaflet-rails"
   s.version     = Leaflet::Rails::VERSION
   s.authors     = ["Akshay Joshi"]
-  s.email       = ["joshi.a@gmail.com"]
+  s.email       = ["leaflet_rails@akshayjoshi.com"]
   s.license     = "BSD"
   s.homepage    = ""
   s.summary     = %q{Use leaflet.js with Rails 4/5.}
