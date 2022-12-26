@@ -44,6 +44,9 @@ module Leaflet
           if marker[:popup]
             output << "marker.bindPopup('#{escape_javascript marker[:popup]}');"
           end
+          if marker[:draggable]
+            output << "marker.dragging.enable();"
+          end   
         end
       end
 
