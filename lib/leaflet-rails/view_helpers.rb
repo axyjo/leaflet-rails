@@ -43,7 +43,7 @@ module Leaflet
           end
           if marker[:popup]
             output << "marker.bindPopup('#{escape_javascript marker[:popup]}')"
-            output << '.openPopup()' if marker[:open_popup]
+            output << '.openPopup()' if marker[:open_popup].present? ? marker[:open_popup] : Leaflet.open_popups
             output << ';';
           end
         end

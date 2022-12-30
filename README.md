@@ -101,6 +101,7 @@ map(:center => {
   ]
 )
 ```
+The default value for `:open_popup` can be changed by specifying `Leaflet.open_popups = true` in the initializer.
 
 If you want to override the map settings you have set in the initializer, you can also add them to the helper method:
 
