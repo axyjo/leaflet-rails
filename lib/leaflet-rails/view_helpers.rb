@@ -42,7 +42,9 @@ module Leaflet
             output << "marker = L.marker([#{marker[:latlng][0]}, #{marker[:latlng][1]}]).addTo(map);"
           end
           if marker[:popup]
-            output << "marker.bindPopup('#{escape_javascript marker[:popup]}');"
+            output << "marker.bindPopup('#{escape_javascript marker[:popup]}')"
+            output << '.openPopup()' if marker[:open_popup]
+            output << ';';
           end
         end
       end
