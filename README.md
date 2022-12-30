@@ -81,7 +81,7 @@ map(:center => {
 )
 ```
 
-Adding a `:popup` element to a marker hash will also generate a popup for a maker:
+Adding a `:popup` element to a marker hash will also generate a popup for a maker. There is also an optional `:open_popup` element that can be set to open the popup on map load:
 
 ```ruby
 map(:center => {
@@ -89,10 +89,15 @@ map(:center => {
     :zoom => 18
   },
   :markers => [
-     {
-       :latlng => [51.52238797921441, -0.08366235665359283],
-       :popup => "Hello!"
-     }
+    {
+      :latlng => [51.52238797921441, -0.08366235665359283],
+      :popup => "This popup will not display on page load."
+    },
+    {
+      :latlng => [51.5225425, -0.0847174,17.58],
+      :popup => "This popup will display on page load.",
+      :open_popup => true
+    }
   ]
 )
 ```
