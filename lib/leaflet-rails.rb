@@ -7,7 +7,8 @@ module Leaflet
   mattr_accessor :attribution
   mattr_accessor :max_zoom
   mattr_accessor :subdomains
-  
+  mattr_accessor :open_popups
+
   module Rails
     class Engine < ::Rails::Engine
       initializer 'leaflet-rails.precompile' do |app|
