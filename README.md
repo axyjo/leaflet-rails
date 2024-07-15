@@ -1,6 +1,11 @@
 [![Build Status](https://travis-ci.org/axyjo/leaflet-rails.png?branch=master)](https://travis-ci.org/axyjo/leaflet-rails)
 [![Gem Version](https://badge.fury.io/rb/leaflet-rails.png)](http://badge.fury.io/rb/leaflet-rails)
 
+Note: Intent to Deprecate
+================
+As of 2024-07-14, Rails 5 is long past its EOL. Rails 6+ support alternative Javascript bundling solutions, which work a lot better than this approach does. As such, I intend on marking this project as deprecated on or after 2024-10-01. Any Leaflet upgrades prior to that date will still be honoured.
+
+
 Quickstart Guide
 ================
 
@@ -38,7 +43,7 @@ Version Parity
 | 0.7.5  | 0.7.5  | leaflet.js 0.7.4 was reverted. |
 | 0.7.6  | ----   | Skipped to sync with upstream. |
 | 0.7.7  | 0.7.7  | Sync version numbers with upstream. |
-
+| 1.9.5  | 1.9.4  | Adding intent to deprecate post-install message. |
 
 Helpers
 =======
