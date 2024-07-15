@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.executables   = []
   s.require_paths = ['lib']
 
+  s.post_install_message = "leaflet-rails: Intent to deprecate on or after 2024-10-01. See repo for details"
+
   s.add_dependency 'railties', '>= 4.2.0'
   s.add_dependency 'actionpack', '>= 4.2.0'
   s.add_development_dependency 'rspec', '<= 3.4.0'
